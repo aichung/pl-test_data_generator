@@ -17,11 +17,25 @@ sys.path.append(os.path.dirname(__file__))
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
 
+from os import listdir, sep
+from os.path import abspath, basename, isdir
+from distutils.dir_util import copy_tree
+import shutil
+import pudb
+import time
+import glob
+
 
 Gstr_title = """
 
-Generate a title from 
-http://patorjk.com/software/taag/#p=display&f=Doom&t=test_data_generator
+ _            _        _       _                                           _             
+| |          | |      | |     | |                                         | |            
+| |_ ___  ___| |_   __| | __ _| |_ __ _     __ _  ___ _ __   ___ _ __ __ _| |_ ___  _ __ 
+| __/ _ \/ __| __| / _` |/ _` | __/ _` |   / _` |/ _ \ '_ \ / _ \ '__/ _` | __/ _ \| '__|
+| ||  __/\__ \ |_ | (_| | (_| | || (_| |  | (_| |  __/ | | |  __/ | | (_| | || (_) | |   
+ \__\___||___/\__| \__,_|\__,_|\__\__,_|   \__, |\___|_| |_|\___|_|  \__,_|\__\___/|_|   
+               ______                ______ __/ |                                        
+              |______|              |______|___/                                         
 
 """
 
@@ -52,15 +66,15 @@ where necessary.)
 
     BRIEF EXAMPLE
 
-        * Bare bones execution
+        * Copy the (container) internal data to the output directory:
 
             mkdir in out && chmod 777 out
-            python test_data_generator.py   \\
-                                in    out
+            python test_data_generator.py out
 
     DESCRIPTION
 
-        `test_data_generator.py` ...
+        `test_data_generator.py` copies internal 'test' data to the
+        <outputDir>.
 
     ARGS
 
@@ -138,6 +152,14 @@ class Test_data_generator(ChrisApp):
         """
         print(Gstr_title)
         print('Version: %s' % self.get_version())
+
+        str_srcDir  = '../data'
+        l_files = os.listdir(str_srcDir)
+        for str_file in l_files:
+            str_filename = os.path.join(str_srcDir, str_file)
+            if (os.path.isfile(str_filename)):
+                print('Copying %s...' % str_filename)
+                shutil.copy(str_filename, options.outputdir)
 
     def show_man_page(self):
         """
