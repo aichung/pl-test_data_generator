@@ -153,12 +153,8 @@ class Test_data_generator(ChrisApp):
         print('Version: %s' % self.get_version())
 
         str_srcDir  = '../data'
-        l_files = os.listdir(str_srcDir)
-        for str_file in l_files:
-            str_filename = os.path.join(str_srcDir, str_file)
-            if (os.path.isfile(str_filename)):
-                print('Copying %s...' % str_filename)
-                shutil.copy(str_filename, options.outputdir)
+        copy_tree(str_srcDir, options.outputdir)
+
 
     def show_man_page(self):
         """
