@@ -152,8 +152,7 @@ class Test_data_generator(ChrisApp):
         print(Gstr_title)
         print('Version: %s' % self.get_version())
 
-        path_parent = os.path.dirname(os.getcwd())
-        str_srcDir  = '%s/data' % path_parent
+        str_srcDir  = '%../data'
         print('\nCopying files from:\n\t%s\n to:\n\t%s.....\n' % (str_srcDir, options.outputdir))
         copy_tree(str_srcDir, options.outputdir)
 

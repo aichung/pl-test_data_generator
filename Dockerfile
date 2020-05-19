@@ -27,6 +27,7 @@ FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
 ENV APPROOT="/usr/src/test_data_generator"
+COPY ["data", "/usr/src/data"]
 COPY ["test_data_generator", "${APPROOT}"]
 COPY ["requirements.txt", "${APPROOT}"]
 
