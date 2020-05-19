@@ -152,7 +152,7 @@ class Test_data_generator(ChrisApp):
         print(Gstr_title)
         print('Version: %s' % self.get_version())
 
-        str_srcDir  = '/usr/src/data'
+        str_srcDir  = '..data'
         print('\nCopying files from:\n\t%s\n to:\n\t%s.....\n' % (str_srcDir, options.outputdir))
         copy_tree(str_srcDir, options.outputdir)
 
